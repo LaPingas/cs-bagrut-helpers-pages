@@ -9,6 +9,72 @@ namespace Searches_and_Sorts
     public static class Program
     {
         /// <summary>
+        /// Finds the minimum value of given array
+        /// Time complexity: O(n), n = given array length
+        /// </summary>
+        /// <param name="arr"> The given array </param>
+        /// <returns> The minimum value of given array </returns>
+        public static int FindMin(int[] arr)
+        {
+            int min = Int32.MaxValue;
+            for (int i = 0, i < arr.Length; i++)
+                if (arr[i] < min)
+                    min = arr[i];
+            return min;
+        }
+        
+        /// <summary>
+        /// Finds the maximum value of given array
+        /// Time complexity: O(n), n = given array length
+        /// </summary>
+        /// <param name="arr"> The given array </param>
+        /// <returns> The maximum value of given array </returns>
+        public static int FindMax(int[] arr)
+        {
+            int max = Int32.MinValue;
+            for (int i = 0, i < arr.Length; i++)
+                if (arr[i] > max)
+                    max = arr[i];
+            return max;
+        }
+        
+        /// <summary>
+        /// Finds the index of the minimum value of given array
+        /// Time complexity: O(n), n = given array length
+        /// </summary>
+        /// <param name="arr"> The given array </param>
+        /// <returns> The index of the minimum value of given array </returns>
+        public static int FindMinLoc(int[] arr)
+        {
+            int min = Int32.MaxValue, loc = 0;
+            for (int i = 0, i < arr.Length; i++)
+                if (arr[i] < min)
+                {
+                    loc = i;
+                    min = arr[i];
+                }
+            return loc;
+        }
+        
+        /// <summary>
+        /// Finds the index of the maximum value of given array
+        /// Time complexity: O(n), n = given array length
+        /// </summary>
+        /// <param name="arr"> The given array </param>
+        /// <returns> The index of the maximum value of given array </returns>
+        public static int FindMaxLoc(int[] arr)
+        {
+            int max = Int32.MinValue, loc = 0;
+            for (int i = 0, i < arr.Length; i++)
+                if (arr[i] > max)
+                {
+                    loc = i;
+                    max = arr[i];
+                }
+            return loc;
+        }
+        
+        /// <summary>
         /// Merges two arrays
         /// Time complexity: O(n + m), n = first array length, m = second array length
         /// </summary>
