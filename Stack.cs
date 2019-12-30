@@ -9,7 +9,7 @@ namespace Stack
         /// </summary>
         /// <param name="source"> The source stack </param>
         /// <returns> A new stack with the same content as the given stack </returns>
-        public static Stack<T> CopyStack<T>(this Stack<T> source, Stack<T> destination = null)
+        public static Stack<T> CopyStack<T>(Stack<T> source, Stack<T> destination = null)
         {
             if (destination == null)
                 destination = new Stack<T>();
@@ -19,7 +19,7 @@ namespace Stack
                 temp.Push(source.Top());
                 destination.Push(source.Pop());
             }
-            temp.SpillStack(source);
+            SpillStack(temp, source);
             return destination;
         }
 
@@ -30,7 +30,7 @@ namespace Stack
         /// <param name="from"> The source stack </param>
         /// <param name="to"> The target stack </param>
         /// <returns> A new stack with the same content as the given stack </returns>
-        public static Stack<T> SpillStack<T>(this Stack<T> source, Stack<T> destination = null)
+        public static Stack<T> SpillStack<T>(Stack<T> source, Stack<T> destination = null)
         {
             if (destination == null)
                 destination = new Stack<T>();
@@ -47,7 +47,7 @@ namespace Stack
         /// <returns> The minimum value in the stack </returns>
         public static int FindMin(Stack<int> source)
         {
-            Stack<int> workingStack = source.CopyStack();
+            Stack<int> workingStack = CopyStack(source);
             int min = Int32.MaxValue;
             while (!workingStack.IsEmpty())
             {
@@ -66,9 +66,9 @@ namespace Stack
         public static void CircularStackMovement<T>(Stack<T> source)
         {
             T top = source.Pop();
-            Stack<T> temp = source.SpillStack();
+            Stack<T> temp = SpillStack(source);
             source.Push(top);
-            temp.SpillStack(source);
+            SpillStack(temp, source);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Stack
         /// <returns> True if both stacks have the same items, otherwise false </returns>
         public static bool DeepEqual<T>(Stack<T> s1, Stack<T> s2)
         {
-            Stack<T> temp = s1.CopyStack();
+            Stack<T> temp = CopyStack(s1);
             while (!temp.IsEmpty())
                 if (SearchStack(s2, temp.Pop()))
                     return true;
