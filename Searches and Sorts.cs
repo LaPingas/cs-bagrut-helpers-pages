@@ -10,6 +10,7 @@ namespace Searches_and_Sorts
     {
         /// <summary>
         /// Merges two arrays
+        /// Time complexity: O(n + m), n = first array length, m = second array length
         /// </summary>
         /// <param name="a"> First array </param>
         /// <param name="b"> Second array </param>
@@ -35,6 +36,12 @@ namespace Searches_and_Sorts
             return c;
         }
         
+        /// <summary>
+        /// Searches given value
+        /// Time complexity: O(log2 n), n = array length
+        /// </summary>
+        /// <param name="arr"> The given array </param>
+        /// <returns> Index of given key if exist in the array, else -1 </returns>
         public static int BinarySearch(int[] arr, int searchKey)
         {
             int mid, max = arr.Length, min = 0;
@@ -51,6 +58,12 @@ namespace Searches_and_Sorts
             }
         }
         
+        /// <summary>
+        /// Sorts an array
+        /// Time complexity: O(n ^ 2), n = array length
+        /// </summary>
+        /// <param name="arr"> The given array </param>
+        /// <returns> The given array, sorted </returns>
         public static int[] BubbleSort(int[] arr)
         {
             for (int write = 0; write < arr.Length; write++)
